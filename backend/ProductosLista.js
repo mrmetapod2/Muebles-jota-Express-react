@@ -1,4 +1,4 @@
-//este script se encarga de mostrar los productos y mandarte a producto.html cuando lo clickeas
+//este script se encarga de cargar los productos y exportarlos al resto del backend
 
 const productos = [//se crea la lista de productos
   { 
@@ -90,3 +90,5 @@ const productos = [//se crea la lista de productos
     detalles: "Tapizado premium antimanchas, estructura robusta de madera certificada FSC, cojines de alta densidad. Parte del programa 'Herencia Viva' para asegurar longevidad."
   }
 ];
+
+module.exports = productos;
