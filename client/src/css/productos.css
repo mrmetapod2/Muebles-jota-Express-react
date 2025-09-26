@@ -1,0 +1,156 @@
+/* Colores base */
+:root {
+  --brand: #A0522D;
+  --secondary: #87A96B;
+  --background: #F5E6D3;
+  --premium: #D4A437;
+  --light: #C47A6D;
+  --font-primary: 'Inter', system-ui, sans-serif;
+  --font-secondary: 'Playfair Display', Georgia, serif;
+  
+}
+
+/* Body */
+body {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-weight: 400; /* Inter Regular */
+  font-size: 12pt;
+  line-height: 1.6;
+  background: var(--background);
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+  width: 100%;
+}
+
+/* Main container */
+main {
+  padding: 40px 20px; /* top/bottom, left/right */
+}
+
+/* Buttons */
+.btn {
+  font-family: var(--font-primary);
+  font-weight: 500; /* Inter Medium for CTAs */
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--premium);
+  color: white;
+  padding: 12px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: var(--light);
+}
+
+/* Productos section */
+.productos {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.productos h2 {
+  font-family: var(--font-secondary);
+  font-weight: 700; /* Playfair Display Bold */
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--brand);
+  margin-bottom: 30px;
+}
+
+/* Grid layout */
+.productos-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* Product card */
+.producto-card {
+  background: white;
+  border: 2px solid var(--secondary);
+  border-radius: 12px;
+  padding: 15px;
+  transition: transform 0.2s;
+  font-family: var(--font-primary);
+  font-weight: 400; /* Inter Regular */
+}
+
+.producto-card:hover {
+  transform: translateY(-5px);
+}
+
+.producto-card img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.precio {
+  font-family: var(--font-primary);
+  font-weight: 500; /* Inter Medium for emphasis */
+  color: var(--premium);
+  margin: 10px 0;
+}
+
+/* Card button */
+.producto-card button {
+  font-family: var(--font-primary);
+  font-weight: 500; /* Inter Medium */
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--secondary);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+  transition: background 0.3s;
+}
+
+.producto-card button:hover {
+  background: var(--brand);
+}
+
+/* Footer */
+.footer {
+  background: var(--brand);
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 40px;
+  font-family: var(--font-primary);
+  font-weight: 400; /* Inter Regular */
+}
+/* Búsqueda de productos */
+.header-busqueda {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.header-busqueda input {
+  padding: 8px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+}
+
+.header-busqueda button {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-left: 0;
+  border-radius: 0 5px 5px 0;
+  background-color: var(--brand); /* marrón */
+  color: white;
+  cursor: pointer;
+}
+
+

@@ -1,0 +1,79 @@
+:root {
+  --brand: #A0522D;
+  --secondary: #87A96B;
+  --background: #F5E6D3;
+  --premium: #D4A437;
+  --light: #C47A6D;
+  --font-primary: 'Inter', system-ui, sans-serif;
+  --font-secondary: 'Playfair Display', Georgia, serif;
+}
+
+/* Footer */
+footer {
+  background-color: var(--background);
+  border-top: 3px solid var(--premium);
+  padding: 20px;
+  color: var(--brand);
+  font-family: var(--font-primary);
+  font-weight: 400; /* Inter Regular */
+  font-size: 12pt;
+  line-height: 1.6;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* Footer sections */
+footer .section {
+  flex: 1 1 45%; /* two columns side by side */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Contact columns */
+footer #Contacto .column {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+footer .column b {
+  font-family: var(--font-primary);
+  font-weight: 500; /* Inter Medium for emphasis */
+  color: var(--secondary);
+  min-width: 100px;
+}
+
+footer .column p {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-weight: 400; /* Inter Regular */
+  color: var(--brand);
+}
+
+/* Responsive footer */
+@media (max-width: 768px) {
+  footer {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  footer .section {
+    flex: 1 1 100%;
+  }
+
+  footer #Contacto {
+    margin-top: 20px;
+  }
+
+  footer #Contacto .column {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  footer .column b {
+    min-width: auto;
+  }
+}

@@ -1,0 +1,133 @@
+:root {
+  --brand: #A0522D;
+  --secondary: #87A96B;
+  --background: #F5E6D3;
+  --premium: #D4A437;
+  --light: #C47A6D;
+  --font-primary: 'Inter', system-ui, sans-serif;
+  --font-secondary: 'Playfair Display', Georgia, serif;
+ 
+}
+
+/* Body */
+body {
+  font-family: var(--font-primary);
+  font-weight: 400; /* Inter Regular */
+  font-size: 12pt;
+  margin: 0;
+  
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+  width: 100%;
+  
+}
+
+/* Header */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: var(--background);
+  border-bottom: 3px solid var(--premium);
+}
+
+/* Logo */
+.logo {
+  min-width: 120px;
+  width: 10vw; /* grows with screen size */
+  height: auto; /* proportional height */
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  gap: 2vw; /* grows with screen size */
+}
+
+nav a {
+  font-family: var(--font-primary);
+  font-weight: 500; /* Inter Medium for emphasis */
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  color: var(--brand);
+  font-size: calc(14px + 0.5vw);
+  transition: color 0.3s ease, border-bottom-color 0.3s ease;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+}
+
+nav a:hover {
+  color: var(--secondary);
+  border-bottom-color: var(--light);
+}
+
+/* Cart link */
+.cart-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.4rem;
+  margin-top: -5px;
+}
+
+/* Cart icon */
+.cart-icon {
+  display: inline-block;
+  line-height: 1;
+}
+
+/* Badge number */
+.cart-count {
+  position: absolute;
+  top: -18px;
+  right: -12px;
+  background: var(--premium);
+  color: white;
+  font-family: var(--font-primary);
+  font-weight: 500; /* Inter Medium */
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+
+/* Responsive header */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .logo {
+    width: 50%;
+    min-width: 120px;
+    margin-bottom: 10px;
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+  }
+
+  nav a {
+    font-size: 36px;
+    text-align: center;
+  }
+
+  .cart-link {
+    margin-top: 10px;
+  }
+}

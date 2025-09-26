@@ -1,0 +1,131 @@
+:root {
+  --brand: #A0522D;
+  --secondary: #87A96B;
+  --background: #ffffff;
+  --premium: #D4A437;
+  --light: #C47A6D;
+  --font-primary: 'Inter', system-ui, sans-serif;
+  --font-secondary: 'Playfair Display', Georgia, serif;
+}
+
+/* Body */
+body {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-weight: 400; /* Inter Regular */
+  font-size: 12pt;
+  line-height: 1.6;
+  background: var(--background);
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+  width: 100%;
+}
+
+/* Main container */
+main {
+  padding: 40px 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+/* Heading */
+h1 {
+  font-family: var(--font-secondary);
+  font-weight: 700; /* Playfair Display Bold */
+  font-size: 2.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--brand);
+  margin-bottom: 30px;
+}
+
+/* Contact Form Section */
+.contacto-section {
+  display: flex;
+  justify-content: center;
+}
+
+/* Form container */
+.contacto-form {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-primary);
+  font-weight: 400; /* Inter Regular */
+}
+
+/* Labels */
+.contacto-form label {
+  margin-top: 15px;
+  font-family: var(--font-primary);
+  font-weight: 500; /* Inter Medium for emphasis */
+  color: var(--brand);
+}
+
+/* Inputs & textarea */
+.contacto-form input,
+.contacto-form textarea {
+  margin-top: 8px;
+  padding: 12px;
+  border: 2px solid var(--secondary);
+  border-radius: 8px;
+  font-family: var(--font-primary);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.6;
+  transition: border-color 0.3s;
+}
+
+.contacto-form input:focus,
+.contacto-form textarea:focus {
+  outline: none;
+  border-color: var(--premium);
+}
+
+.contacto-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Submit button */
+.contacto-form button {
+  margin-top: 20px;
+  font-family: var(--font-primary);
+  font-weight: 500; /* Inter Medium for CTA */
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--brand);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.contacto-form button:hover {
+  background: var(--light);
+}
+
+/* Success message style to match textarea */
+.success-message {
+  border: 2px solid var(--secondary);
+  border-radius: 8px;
+  font-family: var(--font-primary);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.6;
+  padding: 12px;
+  margin-top: 10px;
+  color: var(--secondary);
+  background-color: #f0f8f5;
+}
