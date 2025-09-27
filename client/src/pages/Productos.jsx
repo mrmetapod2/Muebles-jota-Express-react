@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Header from "../inc/header.inc";
 import Footer from "../inc/footer.inc";
-import "../css/productos.css";
+import styles from "../css/productos.module.css";
 
 
 function Productos() {
@@ -15,15 +15,15 @@ function Productos() {
     <>
     <Header />
 
-    <main>
+    <main className={styles.main}>
         
         <div>
-            <div className="header-busqueda">
+            <div className={styles["header-busqueda"]}>
               <input type="text" id="busqueda-productos" placeholder="Buscar productos..."></input>
               <button id="btn-buscar">🔍</button>
             </div>
         </div>
-        <div id="productos-container" className="productos-grid"></div>
+        <div id="productos-container" className={styles["productos-grid"]}></div>
     </main>
 
     

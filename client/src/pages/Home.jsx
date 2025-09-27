@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import Header from "../inc/header.inc";
 import Footer from "../inc/footer.inc";
-import "../css/index.css";
+import styles from "../css/index.module.css";
 
 function Home() {
   useEffect(() => {
@@ -15,20 +15,20 @@ function Home() {
     <>
       <Header />
 
-      <main>
-        <section className="hero">
-          <div className="hero-content">
+      <main className={styles.main}>
+        <section className={styles["hero"]}>
+          <div className={styles["hero-content"]}>
             <h1>Bienvenido a Nuestra Tienda</h1>
             <p>Encuentra productos únicos y de calidad premium</p>
-            <a href="/productos" className="btn">
+            <a href="/productos" className={styles["btn"]}>
               Ver Productos
             </a>
           </div>
         </section>
 
-        <section className="productos">
+        <section className={styles["productos"]}>
           <h2>Productos Destacados</h2>
-          <div id="productos-container" className="productos-grid"></div>
+          <div id="productos-container" className={styles["productos-grid"]}></div>
         </section>
       </main>
 

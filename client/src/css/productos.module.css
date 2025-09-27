@@ -11,7 +11,7 @@
 }
 
 /* Body */
-body {
+.body {
   margin: 0;
   font-family: var(--font-primary);
   font-weight: 400; /* Inter Regular */
@@ -26,7 +26,7 @@ body {
 }
 
 /* Main container */
-main {
+.main {
   padding: 40px 20px; /* top/bottom, left/right */
 }
 

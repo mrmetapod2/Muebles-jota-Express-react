@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import Header from "../inc/header.inc";
 import Footer from "../inc/footer.inc";
-import "../css/producto.css";
+import styles from "../css/producto.module.css";
 
 function Producto() {
   
@@ -11,15 +11,15 @@ function Producto() {
     <>
       <Header />
 
-      <main class="producto-detalle">
-        <section class="detalle">
-        <img src="/img/ejemplo-mueble.jpg" alt="Nombre del Producto" className="imagen-detalle"> </img>
-        <div class="info-detalle">
+      <main className={styles["producto-detalle"]}>
+        <section className={styles["detalle"]}>
+        <img src="/img/ejemplo-mueble.jpg" alt="Nombre del Producto" className={styles["imagen-detalle"]}> </img>
+        <div className={styles["info-detalle"]}>
             <h1>Nombre del Producto</h1>
-            <p class="descripcion"></p>
-            <p class="detalles"><strong></strong> </p>
-            <p class="precio">Precio: $45.000</p>
-            <button class="btn-carrito">Añadir al Carrito</button>
+            <p className={styles["descripcion"]}></p>
+            <p className={styles["detalles"]}><strong></strong> </p>
+            <p className={styles["precio"]}>Precio: $45.000</p>
+            <button className={styles["btn-carrito"]}>Añadir al Carrito</button>
         </div>
         </section>
     </main>

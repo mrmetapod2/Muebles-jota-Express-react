@@ -9,7 +9,7 @@
 }
 
 /* Body */
-body {
+.body {
   margin: 0;
   font-family: var(--font-primary);
   font-weight: 400; /* Inter Regular */
@@ -24,14 +24,14 @@ body {
 }
 
 /* Main container */
-main {
+.main {
   padding: 40px 20px;
   max-width: 800px;
   margin: auto;
 }
 
 /* Heading */
-h1 {
+.h1 {
   font-family: var(--font-secondary);
   font-weight: 700; /* Playfair Display Bold */
   font-size: 2.5rem;

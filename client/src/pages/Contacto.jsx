@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import Header from "../inc/header.inc";
 import Footer from "../inc/footer.inc";
-import "../css/contacto.css";
+import styles from "../css/contacto.module.css";
 
 function Home() {
 
@@ -10,11 +10,11 @@ function Home() {
     <>
       <Header />
 
-      <main>
-        <h1>Página de Contacto</h1>
+      <main className={styles["main"]}>
+        <h1 className={styles["h1"]}>Página de Contacto</h1>
 
-        <section classname="contacto-section">
-            <form classname="contacto-form" id="contacto-form">
+        <section className={styles["contacto-section"]}>
+            <form className={styles["contacto-form"]} id="contacto-form">
                 <label for="nombre">Nombre</label>
                 <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" ></input>
 
@@ -25,7 +25,7 @@ function Home() {
                 <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje..." ></textarea>
 
                 <button type="submit">Enviar</button>
-                <p id="mensaje-exito" classname="oculto"></p>
+                <p id="mensaje-exito" className={styles["oculto"]}></p>
             </form>
         
         </section>
