@@ -3,13 +3,10 @@ import React, { useEffect } from "react";
 import Header from "../inc/header.inc";
 import Footer from "../inc/footer.inc";
 import styles from "../css/index.module.css";
+import ProductosMuestra from "../js/ProductosMuestra";
 
 function Home() {
-  useEffect(() => {
-    if (window.renderizarProductos) {
-      window.renderizarProductos(4);
-    }
-  }, []);
+
 
   return (
     <>
@@ -28,7 +25,9 @@ function Home() {
 
         <section className={styles["productos"]}>
           <h2>Productos Destacados</h2>
-          <div id="productos-container" className={styles["productos-grid"]}></div>
+          <div id="productos-container" className={styles["productos-grid"]}>
+            <ProductosMuestra randomCount={4} />
+          </div>
         </section>
       </main>
 

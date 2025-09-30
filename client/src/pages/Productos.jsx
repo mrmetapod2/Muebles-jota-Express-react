@@ -2,14 +2,11 @@ import React, { useEffect } from "react";
 import Header from "../inc/header.inc";
 import Footer from "../inc/footer.inc";
 import styles from "../css/productos.module.css";
+import ProductosMuestra from "../js/ProductosMuestra";
 
 
 function Productos() {
-  useEffect(() => {
-    if (window.renderizarProductos) {
-      window.renderizarProductos();
-    }
-  }, []);
+  
 
   return (
     <>
@@ -23,7 +20,9 @@ function Productos() {
               <button id="btn-buscar">🔍</button>
             </div>
         </div>
-        <div id="productos-container" className={styles["productos-grid"]}></div>
+        <div id="productos-container" className={styles["productos-grid"]}>
+          <ProductosMuestra/>
+        </div>
     </main>
 
     
