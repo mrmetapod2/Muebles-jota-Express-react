@@ -10,6 +10,13 @@ const PORT = 5000;
 app.use(cors());
 app.use(express.json());//para parsear json's
 
+// Middleware global de logging: imprime método y URL de cada petición
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  next();
+});
+
+
 // Importar rutas
 const productosRouter = require("./routes/Productos.js");
 app.use("/api/productos", productosRouter);//aqui se conecta la ruta de Productos.js a localhost:5000/api/productos 
