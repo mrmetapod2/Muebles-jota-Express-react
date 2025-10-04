@@ -6,7 +6,7 @@ import Footer from "../inc/footer.inc";
 import styles from "../css/producto.module.css";
 import { fetchProductos } from "../js/ProductosMuestra";
 
-function Producto() {
+function Producto({ addToCart }) {   // 👈 recibimos la función desde App
   const { id } = useParams();
   const [producto, setProducto] = useState(null);
 
@@ -34,7 +34,7 @@ function Producto() {
         <section className={styles["detalle"]}>
           <img
             src={producto.img}
-            
+            alt={producto.nombre}
             className={styles["imagen-detalle"]}
           />
           <div className={styles["info-detalle"]}>
@@ -44,7 +44,14 @@ function Producto() {
               <strong>Detalles:</strong> {producto.detalles}
             </p>
             <p className={styles["precio"]}>Precio: {producto.precio}</p>
-            <button className={styles["btn-carrito"]}>Añadir al Carrito</button>
+
+            {/* Botón que añade el producto al carrito */}
+            <button 
+              className={styles["btn-carrito"]} 
+              onClick={() => addToCart(producto)}
+            >
+              Añadir al Carrito
+            </button>
           </div>
         </section>
       </main>
