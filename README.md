@@ -1,4 +1,4 @@
-# 🛋️ E-commerce Mueblería Hermanos Jota
+# 🛋️ E-commerce Mueblería Hermanos Jota (Sprint 3 y 4)
 
 ## 👥 Integrantes del equipo
 - **Aldave, Daniel**  
@@ -10,20 +10,30 @@
 ---
 
 ## 📄 Descripción del proyecto
-Este proyecto corresponde al **Sprint 1 y 2** del desarrollo de la plataforma de e-commerce para **Mueblería Hermanos Jota**.  
+Este proyecto corresponde al **Sprint 3 y 4** del desarrollo de la plataforma de e-commerce para **Mueblería Hermanos Jota**. 
 
-El objetivo principal es construir la **fachada digital** y la **experiencia interactiva del cliente** utilizando únicamente tecnologías del lado del cliente (**HTML, CSS y JavaScript**), sin conexión a un backend.
+El objetivo principal fue evolucionar la maqueta inicial hacia una aplicación **full stack** simple:
+- **Backend** en **Node.js + Express**, que expone una API REST con los productos desde un **array local**.
+- **Frontend** en **React (Create React App)**, que consume esa API, renderiza el catálogo, gestiona un carrito básico y un formulario de contacto controlado.
 
 ### ✨ Funcionalidades implementadas
-- 🏠 **Página de inicio** con *hero banner*, productos destacados y navegación clara.  
-- 🛍️ **Catálogo de productos** renderizado dinámicamente desde un archivo JavaScript.  
-- 🔍 **Página de detalle** de cada producto con imagen, descripción y botón **"Añadir al Carrito"**.  
-- 📬 **Página de contacto** con formulario validado en JavaScript.  
-- 🛒 **Carrito simulado** con contador de productos seleccionados.
+- 🛍️ **Catálogo** cargado dinámicamente desde el backend (`GET /api/productos`).  
+- 🔎 **Detalle de producto** por renderizado condicional (sin React Router).  
+- 🛒 **Carrito básico**: contador en la barra de navegación que refleja productos agregados.  
+- 📬 **Formulario de contacto controlado** en React, con validación mínima y confirmación en pantalla.  
+- ⚙️ **Manejo de estados de carga y error** al consumir la API.  
+- 📡 **API modularizada en Express** con middlewares para logging, 404 y manejo de errores.  
 
 ---
 
 ## 🛠️ Tecnologías utilizadas
-- **HTML5** → Etiquetas semánticas para una estructura clara.  
-- **CSS3** → Diseño responsivo (*Mobile First*) y maquetación con Flexbox.  
-- **JavaScript** → Manipulación del DOM, gestión de eventos y simulación de carga asíncrona.  
+### Backend
+- **Node.js (v18.20.8 LTS) + Express** → API REST.  
+- **CORS y middlewares propios** → logging, 404 y errores.  
+- **Array local** → fuente de datos de productos.  
+
+### Frontend
+- **React (CRA)** → Renderizado de componentes.  
+- **Hooks (`useState`, `useEffect`)** → manejo de estados, efectos y formularios.  
+- **Fetch API** → consumo del backend.  
+- **CSS base** → estilos simples y diseño responsivo. 
