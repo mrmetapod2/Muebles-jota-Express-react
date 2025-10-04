@@ -4,21 +4,38 @@ import { Link } from "react-router-dom";
 
 function Navbar({ cartCount }) {
   return (
-    <nav style={{ display: "flex", justifyContent: "space-between", padding: "10px", background: "#eee" }}>
-      <div>
-        <Link to="/">Muebles Jota Express</Link>
-      </div>
-
-      <ul style={{ listStyle: "none", display: "flex", gap: "15px" }}>
-        <li><Link to="/">Inicio</Link></li>
-        <li><Link to="/productos">Productos</Link></li>
-        <li><Link to="/contacto">Contacto</Link></li>
-      </ul>
-
-      <div>
-        🛒 Carrito: <span>{cartCount}</span>
-      </div>
-    </nav>
+    <header className="site-header">
+          {/* Logo */}
+          <Link to="/" className="logo-link">
+            <img src="/img/logo.svg" alt="Logo" className="logo" />
+          </Link>
+    
+          {/* Navigation */}
+          <nav>
+            <Link to="/">Inicio</Link>
+            <Link to="/productos">Productos</Link>
+            <Link to="/contacto">Contacto</Link>
+    
+            {/* Carrito */}
+            <Link to="/carrito" className="cart-link">
+              <span className="cart-icon">🛒</span>
+              <span className="cart-count">{cartCount}</span>
+            </Link>
+            <button
+              id="reset-cart"
+              title="Vaciar carrito"
+              style={{
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                fontSize: "16px",
+                marginLeft: "5px",
+              }}
+            >
+              &#x2716;
+            </button>
+          </nav>
+        </header>
   );
 }
 

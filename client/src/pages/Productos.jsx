@@ -10,7 +10,7 @@ function Productos() {
 
   return (
     <>
-    <Header />
+
 
     <main className={styles.main}>
         
@@ -26,7 +26,7 @@ function Productos() {
     </main>
 
     
-    <Footer />
+   
     </>
   );
 }

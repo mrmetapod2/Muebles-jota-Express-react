@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import Header from "../inc/header.inc";
 import Footer from "../inc/footer.inc";
 import styles from "../css/producto.module.css";
-import { fetchProductos } from "../js/ProductosMuestra";
+import { fetchProductos } from "../js/fetchProductos";
 
 function Producto({ addToCart }) {   // 👈 recibimos la función desde App
   const { id } = useParams();
@@ -17,18 +17,18 @@ function Producto({ addToCart }) {   // 👈 recibimos la función desde App
   if (!producto) {
     return (
       <>
-        <Header />
+ 
         <main className={styles["producto-detalle"]}>
           <p>Cargando producto...</p>
         </main>
-        <Footer />
+        
       </>
     );
   }
 
   return (
     <>
-      <Header />
+
 
       <main className={styles["producto-detalle"]}>
         <section className={styles["detalle"]}>
@@ -56,7 +56,7 @@ function Producto({ addToCart }) {   // 👈 recibimos la función desde App
         </section>
       </main>
 
-      <Footer />
+      
     </>
   );
 }

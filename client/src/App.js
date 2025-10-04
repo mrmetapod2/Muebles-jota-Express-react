@@ -2,9 +2,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Home from "./pages/Home";
 import Productos from "./pages/Productos";
-import Producto from "./pages/Producto";
+import ProductDetail from "./pages/Producto";
 import Contacto from "./pages/Contacto";
 import Navbar from "./inc/Navbar.inc";
+import Footer from "./inc/footer.inc";
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
 
   // 2) Función para añadir producto al carrito
   const addToCart = (producto) => {
+    
     setCarrito([...carrito, producto]);
   };
 
@@ -25,10 +27,12 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/productos" element={<Productos />} />
         {/* Le pasamos addToCart a Producto */}
-        <Route path="/producto/:id" element={<Producto addToCart={addToCart} />} />
+        <Route path="/producto/:id" element={<ProductDetail addToCart={addToCart} />} />
         <Route path="/contacto" element={<Contacto />} />
       </Routes>
+      <Footer />
     </Router>
+    
   );
 }
 

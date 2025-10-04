@@ -10,7 +10,7 @@ function Home() {
 
   return (
     <>
-      <Header />
+
 
       <main className={styles.main}>
         <section className={styles["hero"]}>
@@ -31,7 +31,7 @@ function Home() {
         </section>
       </main>
 
-      <Footer />
+     
     </>
   );
 }

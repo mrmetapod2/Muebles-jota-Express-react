@@ -8,7 +8,7 @@ function Home() {
 
   return (
     <>
-      <Header />
+ 
 
       <main className={styles["main"]}>
         <h1 className={styles["h1"]}>Página de Contacto</h1>
@@ -31,7 +31,7 @@ function Home() {
         </section>
     </main>
 
-      <Footer />
+    
     </>
   );
 }
