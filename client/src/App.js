@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import Productos from "./pages/Productos";
 import Producto from "./pages/Producto";
 import Contacto from "./pages/Contacto";
-import Navbar from "./inc/Navbar";
+import Navbar from "./inc/Navbar.inc";
 
 
 function App() {
