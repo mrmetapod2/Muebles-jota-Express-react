@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from "react";
 import styles from "../css/index.module.css";
-import { useNavigate } from "react-router-dom";
 import { fetchProductos } from "./fetchProductos"; // tu función ya definida
 
-function ProductCard({ id, nombre, precio, img }) {
-  const navigate = useNavigate();
-
+function ProductCard({ id, nombre, precio, img,descripcion,detalles, navigate }) {
+  console.log(navigate);
   return (
     <div className={styles["producto-card"]}>
       <div className={styles["producto"]}>
         <h3>{nombre}</h3>
         <img src={img} alt={nombre} />
         <p className={styles["precio"]}>{precio}</p>
-        <button onClick={() => navigate(`/producto/${id}`)}>Ver más</button>
+        <button onClick={() => navigate.navigate("producto", { id, nombre, precio, img,descripcion,detalles })} className={styles["btn"]}>
+          Ver más
+        </button>
       </div>
     </div>
   );
 }
 
-export default function Productos({ randomCount }) {
+export default function Productos({ randomCount, navigate }) {
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -44,12 +44,15 @@ export default function Productos({ randomCount }) {
   return (
     <div className={styles["productos-grid"]}>
       {productos.map(p => (
-        <ProductCard 
-          key={p.id} 
-          id={p.id} 
-          nombre={p.nombre} 
-          precio={p.precio} 
-          img={p.img} 
+        <ProductCard
+          key={p.id}
+          id={p.id}
+          nombre={p.nombre}
+          precio={p.precio}
+          img={p.img}
+          descripcion= {p.descripcion}
+          detalles= {p.detalles}
+          navigate={navigate}
         />
       ))}
     </div>

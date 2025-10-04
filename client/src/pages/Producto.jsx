@@ -6,13 +6,13 @@ import Footer from "../inc/footer.inc";
 import styles from "../css/producto.module.css";
 import { fetchProductos } from "../js/fetchProductos";
 
-function Producto({ addToCart }) {   // 👈 recibimos la función desde App
+function Producto({ addToCart, producto, navigate }) {   // 👈 recibimos la función desde App
   const { id } = useParams();
-  const [producto, setProducto] = useState(null);
+  
 
-  useEffect(() => {
+  /*useEffect(() => {
     fetchProductos(id).then(setProducto);
-  }, [id]);
+  }, [id]);*/
 
   if (!producto) {
     return (

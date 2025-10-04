@@ -5,7 +5,7 @@ import styles from "../css/productos.module.css";
 import ProductosMuestra from "../js/ProductosMuestra";
 
 
-function Productos() {
+function Productos(navigate) {
   
 
   return (
@@ -21,7 +21,7 @@ function Productos() {
             </div>
         </div>
         <div id="productos-container" className={styles["productos-grid"]}>
-          <ProductosMuestra/>
+          <ProductosMuestra navigate={navigate} />
         </div>
     </main>
 

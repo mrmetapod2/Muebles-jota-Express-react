@@ -5,7 +5,7 @@ import Footer from "../inc/footer.inc";
 import styles from "../css/index.module.css";
 import ProductosMuestra from "../js/ProductosMuestra";
 
-function Home() {
+function Home(navigate) {
 
 
   return (
@@ -26,7 +26,7 @@ function Home() {
         <section className={styles["productos"]}>
           <h2>Productos Destacados</h2>
           <div id="productos-container" className={styles["productos-grid"]}>
-            <ProductosMuestra randomCount={4} />
+            <ProductosMuestra randomCount={4} navigate={navigate} />
           </div>
         </section>
       </main>
