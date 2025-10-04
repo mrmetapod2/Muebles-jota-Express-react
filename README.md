@@ -12,7 +12,7 @@
 ## 📄 Descripción del proyecto
 Este proyecto corresponde al **Sprint 3 y 4** del desarrollo de la plataforma de e-commerce para **Mueblería Hermanos Jota**. 
 
-El objetivo principal fue evolucionar la maqueta inicial hacia una aplicación **full stack** simple:
+El objetivo principal es evolucionar la maqueta inicial hacia una aplicación **full stack** simple:
 - **Backend** en **Node.js + Express**, que expone una API REST con los productos desde un **array local**.
 - **Frontend** en **React (Create React App)**, que consume esa API, renderiza el catálogo, gestiona un carrito básico y un formulario de contacto controlado.
 
