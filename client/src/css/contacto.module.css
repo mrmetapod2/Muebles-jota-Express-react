@@ -129,3 +129,10 @@
   color: var(--secondary);
   background-color: #f0f8f5;
 }
+
+/* Error message (mismo bloque que success-message, con paleta de error) */
+.error-message {
+  border-color: #e57373;
+  background-color: #fff5f5;
+  color: #b00020;
+}

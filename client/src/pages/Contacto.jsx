@@ -1,39 +1,16 @@
-//este archivo es el equivalente a index.html
-import React, { useEffect } from "react";
-import Header from "../inc/header.inc";
-import Footer from "../inc/footer.inc";
-import styles from "../css/contacto.module.css";
+// src/pages/ContactPage.jsx
+import React from "react";
+import ContactForm from "../inc/ContactForm";
+import styles from "../css/contacto.module.css"; // <- importamos el module
 
-function Home() {
-
+export default function ContactPage() {
   return (
-    <>
- 
+    <main className={styles.main}>
+      <h1 className={styles.h1}>Página de Contacto</h1>
 
-      <main className={styles["main"]}>
-        <h1 className={styles["h1"]}>Página de Contacto</h1>
-
-        <section className={styles["contacto-section"]}>
-            <form className={styles["contacto-form"]} id="contacto-form">
-                <label for="nombre">Nombre</label>
-                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" ></input>
-
-                <label for="email">Correo electrónico</label>
-                <input  id="email" name="email" placeholder="tu@email.com" ></input>
-
-                <label for="mensaje">Mensaje</label>
-                <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje..." ></textarea>
-
-                <button type="submit">Enviar</button>
-                <p id="mensaje-exito" className={styles["oculto"]}></p>
-            </form>
-        
-        </section>
+      <section className={styles["contacto-section"]}>
+        <ContactForm />
+      </section>
     </main>
-
-    
-    </>
   );
 }
-
-export default Home;
