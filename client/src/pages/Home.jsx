@@ -1,7 +1,7 @@
 //este archivo es el equivalente a index.html
 import React, { useEffect } from "react";
-import Header from "../inc/header.inc";
-import Footer from "../inc/footer.inc";
+import Header from "../componentes/header.inc";
+import Footer from "../componentes/footer.inc";
 import styles from "../css/index.module.css";
 import ProductosMuestra from "../js/ProductosMuestra";
 

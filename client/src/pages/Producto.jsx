@@ -1,8 +1,8 @@
 // src/pages/Producto.jsx
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Header from "../inc/header.inc";
-import Footer from "../inc/footer.inc";
+import Header from "../componentes/header.inc";
+import Footer from "../componentes/footer.inc";
 import styles from "../css/producto.module.css";
 import { fetchProductos } from "../js/fetchProductos";
 

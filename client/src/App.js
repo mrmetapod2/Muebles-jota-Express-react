@@ -4,8 +4,8 @@ import Home from "./pages/Home";
 import Productos from "./pages/Productos";
 import ProductDetail from "./pages/Producto";
 import Contacto from "./pages/Contacto";
-import Navbar from "./inc/Navbar.inc";
-import Footer from "./inc/footer.inc";
+import Navbar from "./componentes/Navbar.inc";
+import Footer from "./componentes/footer.inc";
 
 function App() {
   // Estado global del carrito

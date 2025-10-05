@@ -1,6 +1,6 @@
 // src/pages/ContactPage.jsx
 import React from "react";
-import ContactForm from "../inc/ContactForm";
+import ContactForm from "../componentes/ContactForm";
 import styles from "../css/contacto.module.css"; // <- importamos el module
 
 export default function ContactPage() {
