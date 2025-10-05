@@ -37,3 +37,43 @@ El objetivo principal es evolucionar la maqueta inicial hacia una aplicación **
 - **Hooks (`useState`, `useEffect`)** → manejo de estados, efectos y formularios.  
 - **Fetch API** → consumo del backend.  
 - **CSS base** → estilos simples y diseño responsivo. 
+---
+
+## 🔌 Endpoints de la API
+- `GET /api/productos` → lista de todos los productos.  
+- `GET /api/productos/:id` → detalle de un producto por id.  
+  - **404** si no existe.  
+
+---
+
+## 🚀 Ejecución del proyecto
+### 1) Backend
+```bash
+cd backend
+npm install
+npm run start   
+```
+API disponible en `http://localhost:4000/api/productos`.
+
+### 2) Frontend
+En otra terminal:
+```bash
+cd client
+npm install
+npm start
+```
+App disponible en `http://localhost:3000`.
+
+> El frontend tiene : "http://localhost:4000"` en `client/package.json`, por lo que puede pedir directamente `/api/productos` sin problemas de CORS.
+
+---
+
+## ✅ Checklist de la consigna
+- [x] API Express con `GET /api/productos` y `GET /api/productos/:id`.  
+- [x] Datos desde archivo `.js` (array local).  
+- [x] Middlewares: logger, 404, error handler.  
+- [x] React que consume la API.  
+- [x] Renderizado condicional para detalle de producto.  
+- [x] Carrito básico (contador en Navbar).  
+- [x] Formulario controlado de contacto.  
+- [x] README con instrucciones y detalles.  
