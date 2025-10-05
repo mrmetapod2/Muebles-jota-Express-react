@@ -1,8 +1,9 @@
 
 //este codigo se dedica a armar una pagina base para las llamadas del backend 
 //localhost:5000 nunca va a tener algo siempre va a ser llamado atraves de http://localhost:5000/api/productos
-const express = require("express");
-const cors = require("cors"); // para permitir peticiones desde React
+import express from "express";
+import cors from "cors";
+import productosRouter from "./routes/Productos.js";
 const app = express();
 const PORT = 5000;
 

@@ -1,7 +1,9 @@
 // Este archivo se dedica a mandar los productos en formato json sea como producto individual o la lista completa
-const express = require("express");
+import express from "express";
+
+import productos from "./routes/ProductosLista.js";
 const router = express.Router();
-const productos = require("../ProductosLista");
+
 
 // GET /api/productos → lista completa
 router.get("/", (req, res) => {
