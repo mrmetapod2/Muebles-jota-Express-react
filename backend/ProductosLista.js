@@ -1,6 +1,6 @@
 //este script se encarga de cargar los productos y exportarlos al resto del backend
 
-const productos = [//se crea la lista de productos
+const  productos = [//se crea la lista de productos
   { 
     id: 1, 
     nombre: "Aparador Uspallata", 
@@ -91,4 +91,5 @@ const productos = [//se crea la lista de productos
   }
 ];
 
-module.exports = productos;
+
+export default productos;

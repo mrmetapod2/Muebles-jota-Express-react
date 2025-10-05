@@ -1,7 +1,7 @@
 // Este archivo se dedica a mandar los productos en formato json sea como producto individual o la lista completa
 import express from "express";
 
-import productos from "./routes/ProductosLista.js";
+import productos from "../ProductosLista.js";
 const router = express.Router();
 
 
@@ -24,4 +24,4 @@ router.get("/:id", (req, res, next) => {
   res.json(producto);//y si el producto existe lo manda como un json
 });
 
-module.exports = router;
+export default router;  

@@ -19,7 +19,6 @@ app.use((req, res, next) => {
 
 
 // Importar rutas
-const productosRouter = require("./routes/Productos.js");
 app.use("/api/productos", productosRouter);//aqui se conecta la ruta de Productos.js a localhost:5000/api/productos 
 
 // Middleware 404
