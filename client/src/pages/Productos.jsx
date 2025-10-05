@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Header from "../componentes/header.inc";
 import Footer from "../componentes/footer.inc";
 import styles from "../css/productos.module.css";
-import ProductosMuestra from "../js/ProductosMuestra";
-
+import ProductosDestacados from "../componentes/productos";
+import SearchBar from "../componentes/SearchBar";
 
 function Productos(navigate) {
   
@@ -11,18 +11,10 @@ function Productos(navigate) {
   return (
     <>
 
-
     <main className={styles.main}>
         
-        <div>
-            <div className={styles["header-busqueda"]}>
-              <input type="text" id="busqueda-productos" placeholder="Buscar productos..."></input>
-              <button id="btn-buscar">🔍</button>
-            </div>
-        </div>
-        <div id="productos-container" className={styles["productos-grid"]}>
-          <ProductosMuestra navigate={navigate} />
-        </div>
+        <SearchBar />
+        <ProductosDestacados navigate={navigate} />
     </main>
 
     
