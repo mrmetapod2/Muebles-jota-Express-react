@@ -5,7 +5,7 @@ import express from "express";
 import cors from "cors";
 import productosRouter from "./routes/Productos.js";
 const app = express();
-const PORT = 5000;
+const PORT = 4000;
 
 // Middlewares
 app.use(cors());

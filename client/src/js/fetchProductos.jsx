@@ -3,8 +3,8 @@
 export async function fetchProductos(id = null) {
   try {
     const url = id 
-      ? `http://localhost:5000/api/productos/${id}`
-      : `http://localhost:5000/api/productos`;
+      ? `http://localhost:4000/api/productos/${id}`
+      : `http://localhost:4000/api/productos`;
 
     const response = await fetch(url);
     if (!response.ok) throw new Error("Error al cargar productos");
