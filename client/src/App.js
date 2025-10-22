@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Productos from "./pages/Productos";
 import ProductDetail from "./pages/Producto";
 import Contacto from "./pages/Contacto";
+import AdminCreateProduct from "./pages/AdminCreateProduct";
 import Navbar from "./componentes/Navbar.inc";
 import Footer from "./componentes/footer.inc";
 
@@ -27,6 +28,7 @@ function App() {
           element={<ProductDetail addToCart={addToCart} />}
         />
         <Route path="/contacto" element={<Contacto />} />
+        <Route path="/admin/crear-producto" element={<AdminCreateProduct />} />
       </Routes>
 
       <Footer />
