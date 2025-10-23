@@ -1,12 +1,15 @@
 // src/inc/Navbar.jsx
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-function Navbar({ cartCount, navigate, resetCart }) {
+function Navbar({ cartCount, resetCart }) {
+  const navigate = useNavigate();
+
   return (
     <header className="site-header">
       {/* Logo */}
       <button
-        onClick={() => navigate("home")}
+        onClick={() => navigate("/")}
         className="logo-link"
         style={{
           background: "none",
@@ -20,12 +23,12 @@ function Navbar({ cartCount, navigate, resetCart }) {
 
       {/* Navigation */}
       <nav>
-        <a onClick={() => navigate("home")}>Inicio</a>
-        <a onClick={() => navigate("productos")}>Productos</a>
-        <a onClick={() => navigate("contacto")}>Contacto</a>
+        <a onClick={() => navigate("/")}>Inicio</a>
+        <a onClick={() => navigate("/productos")}>Productos</a>
+        <a onClick={() => navigate("/contacto")}>Contacto</a>
 
         {/* Carrito */}
-        <a onClick={() => navigate("carrito")} className="cart-link">
+        <a onClick={() => navigate("/carrito")} className="cart-link">
           <span className="cart-icon">🛒</span>
           <span className="cart-count">{cartCount}</span>
         </a>
