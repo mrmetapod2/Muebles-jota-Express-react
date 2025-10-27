@@ -1,7 +1,13 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import styles from "../css/producto.module.css";
 
-const ProductoDetalle = ({ producto, addToCart }) => {
+const ProductoDetalle = ({ addToCart }) => {
+  const location = useLocation();
+  const producto = location.state; // the product data passed via navigate
+  console.log(producto);
+  if (!producto) return <p>Producto no encontrado</p>; // fallback
+
   return (
     <main className={styles["producto-detalle"]}>
       <section className={styles["detalle"]}>
@@ -18,7 +24,6 @@ const ProductoDetalle = ({ producto, addToCart }) => {
           </p>
           <p className={styles["precio"]}>Precio: {producto.precio}</p>
 
-          {/* Botón que añade el producto al carrito */}
           <button
             className={styles["btn-carrito"]}
             onClick={() => addToCart(producto)}

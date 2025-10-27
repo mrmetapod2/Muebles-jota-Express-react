@@ -7,7 +7,7 @@ import ProductosMuestra from "../js/ProductosMuestra";
 import HeroBanner from "../componentes/HeroBanner";
 import ProductosDestacados from "../componentes/productos";
 
-function Home(navigate) {
+function Home() {
 
 
   return (
@@ -16,7 +16,7 @@ function Home(navigate) {
       <main className={styles.main}>
         <HeroBanner />
 
-        <ProductosDestacados navigate={navigate} />
+        <ProductosDestacados />
       </main>
 
      
