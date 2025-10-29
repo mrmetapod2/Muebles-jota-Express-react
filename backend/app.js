@@ -1,40 +1,49 @@
-
-//este codigo se dedica a armar una pagina base para las llamadas del backend 
-//localhost:5000 nunca va a tener algo siempre va a ser llamado atraves de http://localhost:5000/api/productos
+// app.js
 import express from "express";
 import cors from "cors";
+import mongoose from "mongoose";
 import productosRouter from "./routes/Productos.js";
-const app = express();
-const PORT = 4000;
+import dotenv from "dotenv";
+dotenv.config();
 
+const app = express();
+const PORT = DOTENV.PORT_BACK || 5000;
+const MONGOURI = DOTENV.MONGODB_URI;
 // Middlewares
 app.use(cors());
-app.use(express.json());//para parsear json's
+app.use(express.json());
 
-// Middleware global de logging: imprime método y URL de cada petición
+// Logging middleware
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.url}`);
   next();
 });
 
+// Conectar a MongoDB
+mongoose.connect(MONGOURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log("✅ Conectado a MongoDB"))
+.catch(err => console.error("❌ Error conectando a MongoDB:", err));
 
-// Importar rutas
-app.use("/api/productos", productosRouter);//aqui se conecta la ruta de Productos.js a localhost:5000/api/productos 
+// Rutas
+app.use("/api/productos", productosRouter);
 
 // Middleware 404
-app.use((req, res, next) => {
+app.use((req, res) => {
   res.status(404).json({ error: "Ruta no encontrada" });
 });
 
-// Middleware de errores centralizado
-app.use((err, req, res, next) => {
+// Middleware de errores
+app.use((err, req, res) => {
   console.error(err.stack);
   res.status(err.status || 500).json({
-    error: err.message || "Error interno del servidor" //mensaje error si el servidor falla
+    error: err.message || "Error interno del servidor"
   });
 });
 
 // Iniciar servidor
 app.listen(PORT, () => {
-  console.log(`Servidor backend escuchando en http://localhost:${PORT}`); //mensaje cuando inicias el backend
+  console.log(`Servidor backend escuchando en http://localhost:${PORT}`);
 });
