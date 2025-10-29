@@ -2,13 +2,13 @@
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
-import productosRouter from "./routes/Productos.js";
+import productosRouter from "./routes/productRoutes.js";
 import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-const PORT = DOTENV.PORT_BACK || 5000;
-const MONGOURI = DOTENV.MONGODB_URI;
+const PORT = process.env.PORT_BACK || process.env.PORT || 5000;
+const MONGOURI = process.env.MONGODB_URI;
 // Middlewares
 app.use(cors());
 app.use(express.json());
@@ -20,6 +20,11 @@ app.use((req, res, next) => {
 });
 
 // Conectar a MongoDB
+if (!MONGOURI) {
+  console.error("❌ No se encontró la variable de entorno MONGODB_URI");
+  process.exit(1);
+}
+
 mongoose.connect(MONGOURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -36,7 +41,7 @@ app.use((req, res) => {
 });
 
 // Middleware de errores
-app.use((err, req, res) => {
+app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(err.status || 500).json({
     error: err.message || "Error interno del servidor"
