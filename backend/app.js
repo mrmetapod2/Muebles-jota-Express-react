@@ -8,9 +8,14 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT_BACK ||  5000;
+const PORTFRONT = process.env.PORT_FRONT ||  3000;
+const FRONTEND_ORIGIN = `http://localhost:${PORT_FRONT}`;
 const MONGOURI = process.env.MONGODB_URI;
 // Middlewares
-app.use(cors());
+app.use(cors({
+  origin: FRONTEND_ORIGIN, // or '*' for testing
+  credentials: true,               // if you're sending cookies/auth headers
+}));
 app.use(express.json());
 
 // Logging middleware
