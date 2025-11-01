@@ -16,7 +16,7 @@ const allowedOrigins = [
   `http://localhost:${PORT_FRONT}`,
   `http://127.0.0.1:${PORT_FRONT}`
 ];
-
+console.log("CORS Origin:", allowedOrigins);
 app.use(cors({
   origin: (origin, callback) => {
     if (!origin || allowedOrigins.includes(origin)) {
