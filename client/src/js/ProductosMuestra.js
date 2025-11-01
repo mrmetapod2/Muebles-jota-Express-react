@@ -3,19 +3,25 @@ import styles from "../css/index.module.css";
 import { fetchProductos } from "./fetchProductos";
 import { useNavigate } from "react-router-dom";
 
-function ProductCard({ id, nombre, precio, img, descripcion, detalles }) {
+const formatPrice = (n) =>
+  typeof n === "number"
+    ? new Intl.NumberFormat("es-AR", { style: "currency", currency: "ARS" }).format(n)
+    : n;
+
+function ProductCard({ id, nombre, precio, imagenUrl, descripcion, stock, detalles }) {
   const navigate = useNavigate();
-  console.log("Rendering product:", img);
+
   return (
     <div className={styles["producto-card"]}>
       <div className={styles["producto"]}>
         <h3>{nombre}</h3>
-        <img src={img} alt={nombre} />
-        <p className={styles["precio"]}>{precio}</p>
+        <img src={imagenUrl || "/placeholder.png"} alt={nombre} />
+        <p className={styles["precio"]}>{formatPrice(precio)}</p>
+        {typeof stock === "number" && <p>Stock: {stock}</p>}
         <button
           onClick={() =>
             navigate(`/producto/${id}`, {
-              state: { id, nombre, precio, img, descripcion, detalles },
+              state: { id, nombre, precio, imagenUrl, descripcion, stock, detalles },
             })
           }
           className={styles["btn"]}
@@ -36,11 +42,12 @@ export default function Productos({ randomCount }) {
     setLoading(true);
     fetchProductos()
       .then((all) => {
+        const list = Array.isArray(all) ? all : [];
         if (randomCount) {
-          const shuffled = [...all].sort(() => 0.5 - Math.random());
+          const shuffled = [...list].sort(() => 0.5 - Math.random());
           setProductos(shuffled.slice(0, randomCount));
         } else {
-          setProductos(all);
+          setProductos(list);
         }
       })
       .catch(() => setError(true))
@@ -58,8 +65,9 @@ export default function Productos({ randomCount }) {
           id={p.id}
           nombre={p.nombre}
           precio={p.precio}
-          img={p.img}
+          imagenUrl={p.imagenUrl}
           descripcion={p.descripcion}
+          stock={p.stock}
           detalles={p.detalles}
         />
       ))}

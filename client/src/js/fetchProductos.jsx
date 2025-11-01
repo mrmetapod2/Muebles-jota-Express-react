@@ -1,8 +1,6 @@
+// src/js/fetchProductos.jsx
+const PORT = process.env.PORT_BACK || 5001;
 
-
-
-const PORT = process.env.PORT_BACK ||  5001;
-// src/js/fetchProductos.js
 export async function fetchProductos(id = null) {
   try {
     const url = id 
@@ -15,24 +13,25 @@ export async function fetchProductos(id = null) {
     const data = await response.json();
 
     if (id) {
-      // single product
+      // Producto individual
       return {
         ...data,
-        img: `/${data.img}`
+        imagenUrl: data.imagenUrl ? `/${data.imagenUrl}` : null
       };
     }
 
-    // multiple products
+    // Lista de productos
     return data.map(item => ({
-      id: item.id,
+      id: item._id,
       nombre: item.nombre,
-      precio: item.precio,
-      img: `${item.img}`,
       descripcion: item.descripcion,
-      detalles: item.detalles,
+      precio: item.precio,
+      stock: item.stock,
+      imagenUrl: item.imagenUrl ? `${item.imagenUrl}` : null,
+      detalles: item.detalles
     }));
   } catch (err) {
-    console.error(err);
+    console.error("Error en fetchProductos:", err);
     return id ? null : [];
   }
 }
