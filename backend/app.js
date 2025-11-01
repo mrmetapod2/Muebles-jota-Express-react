@@ -7,7 +7,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT_BACK ||  5000;
+const PORT = process.env.PORT_BACK ||  5001;
 const PORT_FRONT = process.env.PORT_FRONT ||  3000;
 const FRONTEND_ORIGIN = `http://localhost:${PORT_FRONT}`;
 const MONGOURI = process.env.MONGODB_URI;
