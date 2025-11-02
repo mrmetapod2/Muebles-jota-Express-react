@@ -12,6 +12,7 @@ const PORT_FRONT = process.env.PORT_FRONT || `http://localhost:3000`;
 const FRONTEND_ORIGIN = `http://localhost:${PORT_FRONT}`;
 const MONGOURI = process.env.MONGODB_URI;
 // Middlewares
+console.log("Backend PORT_FRONT:", PORT_FRONT);
 const allowedOrigins = [
   `${PORT_FRONT}`
   
