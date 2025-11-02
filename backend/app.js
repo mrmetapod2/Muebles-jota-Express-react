@@ -9,7 +9,7 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT_BACK ||  5001;
 const PORT_FRONT = process.env.PORT_FRONT || `http://localhost:3000`;
-const FRONTEND_ORIGIN = `${PORT_FRONT}/`;
+const FRONTEND_ORIGIN = `${PORT_FRONT}`;
 const MONGOURI = process.env.MONGODB_URI;
 // Middlewares
 
