@@ -8,13 +8,13 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT_BACK ||  5001;
-const PORT_FRONT = process.env.PORT_FRONT ||  3000;
+const PORT_FRONT = process.env.PORT_FRONT || `http://localhost:3000`;
 const FRONTEND_ORIGIN = `http://localhost:${PORT_FRONT}`;
 const MONGOURI = process.env.MONGODB_URI;
 // Middlewares
 const allowedOrigins = [
-  `http://localhost:${PORT_FRONT}`,
-  `http://127.0.0.1:${PORT_FRONT}`
+  `${PORT_FRONT}`
+  
 ];
 console.log("CORS Origin:", allowedOrigins);
 app.use(cors({

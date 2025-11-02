@@ -1,11 +1,11 @@
 // src/js/fetchProductos.jsx
-const PORT = process.env.REACT_APP_PORT_BACK || 5000;
+const PORT = process.env.REACT_APP_PORT_BACK || "http://localhost:5000/api/productos";
 
 export async function fetchProductos(id = null) {
   try {
     const url = id 
-      ? `http://localhost:${PORT}/api/productos/${id}`
-      : `http://localhost:${PORT}/api/productos`;
+      ? `${PORT}/${id}`
+      : `${PORT}`;
 
     const response = await fetch(url);
     if (!response.ok) throw new Error("Error al cargar productos");

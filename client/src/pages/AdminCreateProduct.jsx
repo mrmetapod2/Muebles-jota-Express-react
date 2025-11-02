@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import styles from "../css/adminCreateProduct.module.css";
 
 
-const PORT =process.env.REACT_APP_PORT_BACK;
-const url= `http://localhost:${PORT}/api/productos`
+const PORT =process.env.REACT_APP_PORT_BACK|| "http://localhost:5001/api/productos";
+
 const initialProduct = {
   nombre: "",
   descripcion: "",
@@ -29,7 +29,7 @@ function AdminCreateProduct() {
     setError("");
 
     try {
-      const respuesta = await fetch(url, {
+      const respuesta = await fetch(PORT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -45,7 +45,7 @@ function AdminCreateProduct() {
 
       const nuevoProducto = await respuesta.json();
       console.log("Producto creado:", nuevoProducto);
-      navigate(`/producto/${nuevoProducto.id ?? ""}`.replace(/\/$/, "") );
+      navigate(`/producto/${nuevoProducto._id}`.replace(/\/$/, "") );
     } catch (err) {
       setError(err.message);
     }

@@ -5,7 +5,7 @@ import { fetchProductos } from "../js/fetchProductos";
 
 
 const PORT =process.env.REACT_APP_PORT_BACK;
-const url= `http://localhost:${PORT}/api/productos`
+
 
 
 
@@ -16,8 +16,9 @@ const formatPrice = (n) =>
 
 const ProductoDetalle = ({ addToCart }) => {
   const { id } = useParams();
+  console.log("ProductoDetalle received ID:", id);
   const [producto, setProducto] = useState(null);
-
+  
   const navigate = useNavigate();
 
    useEffect(() => {
@@ -39,7 +40,7 @@ const ProductoDetalle = ({ addToCart }) => {
 
    
     try {
-      const response = await fetch(`${url || "http://localhost:5001/api/productos"}/${id}`, {
+      const response = await fetch(`${PORT || "http://localhost:5001/api/productos"}/${id}`, {
         method: "DELETE",
       });
 
