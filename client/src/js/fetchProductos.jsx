@@ -1,6 +1,6 @@
 // src/js/fetchProductos.jsx
 const PORT = process.env.REACT_APP_PORT_BACK || "http://localhost:5000/api/productos";
-
+console.log("fetchProductos PORT:", PORT);
 export async function fetchProductos(id = null) {
   try {
     const url = id 
