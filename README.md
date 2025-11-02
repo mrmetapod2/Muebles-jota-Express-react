@@ -1,4 +1,4 @@
-# 🛋️ E-commerce Mueblería Hermanos Jota (Sprint 3 y 4)
+# 🛋️ E-commerce Mueblería Hermanos Jota — Sprint 5 & 6 (Full Stack MERN)
 
 ## 👥 Integrantes del equipo
 - **Aldave, Daniel**  
@@ -10,50 +10,75 @@
 ---
 
 ## 📄 Descripción del proyecto
-Este proyecto corresponde al **Sprint 3 y 4** del desarrollo de la plataforma de e-commerce para **Mueblería Hermanos Jota**. 
+Este proyecto corresponde al **Sprint 5 y 6** del desarrollo de la plataforma de e-commerce para **Mueblería Hermanos Jota**. 
 
-El objetivo principal es evolucionar la maqueta inicial hacia una aplicación **full stack** simple:
-- **Backend** en **Node.js + Express**, que expone una API REST con los productos desde un **array local**.
-- **Frontend** en **React (Create React App)**, que consume esa API, renderiza el catálogo, gestiona un carrito básico y un formulario de contacto controlado.
+El objetivo fue conectar el frontend en React con un backend en Express y base de datos en MongoDB Atlas, cumpliendo con los requisitos de persistencia, CRUD completo y consumo de API real.
 
-### ✨ Funcionalidades implementadas
-- 🛍️ **Catálogo** cargado dinámicamente desde el backend (`GET /api/productos`).  
-- 🔎 **Detalle de producto** por renderizado condicional (sin React Router).  
-- 🛒 **Carrito básico**: contador en la barra de navegación que refleja productos agregados.  
-- 📬 **Formulario de contacto controlado** en React, con validación mínima y confirmación en pantalla.  
-- ⚙️ **Manejo de estados de carga y error** al consumir la API.  
-- 📡 **API modularizada en Express** con middlewares para logging, 404 y manejo de errores.  
+## ✨ Principales mejoras respecto al Sprint anterior
+
+📡 **Conexión real a MongoDB Atlas** (persistencia en la nube).
+
+🧩 **API CRUD completa** para productos con Express y Mongoose.
+
+🧭 **React Router DOM** para navegación dinámica entre páginas.
+
+🧾 **Formulario controlado** para crear productos nuevos desde el frontend.
+
+🗑️ **Eliminación de productos** desde el detalle con confirmación y redirección automática.
+
+⚙️ **Estados de carga y error** al consumir la API.
 
 ---
 
 ## 🛠️ Tecnologías utilizadas
 ### Backend
-- **Node.js (v18.20.8 LTS) + Express** → API REST.  
-- **CORS y middlewares propios** → logging, 404 y errores.  
-- **Array local** → fuente de datos de productos.  
+- **Node.js + Express** → Servidor y API REST.
+- **MongoDB Atlas + Mongoose** → Base de datos en la nube 
+- **dotenv** → Variables de entorno
+- **CORS** → Permitir peticiones del frontend
 
 ### Frontend
 - **React (CRA)** → Renderizado de componentes.  
-- **Hooks (`useState`, `useEffect`)** → manejo de estados, efectos y formularios.  
+- **React Router DOM** → Rutas dinámicas y navegación.
 - **Fetch API** → consumo del backend.  
-- **CSS base** → estilos simples y diseño responsivo. 
+- **Hooks** →  (`useState`, `useEffect`,`useParams`,`useNavigate`)
+---
+
+## 📁 Estructura del repositorio
+/client                # `Frontend (React)`
+/backend               # `Backend (Express + Mongoose)`
+README.md
+
 ---
 
 ## 🔌 Endpoints de la API
-- `GET /api/productos` → lista de todos los productos.  
-- `GET /api/productos/:id` → detalle de un producto por id.  
-  - **404** si no existe.  
+- `GET /api/productos` → Devuelve todos los productos.
+- `GET /api/productos/:id` → Devuelve un producto por su _id.
+- `POST /api/productos` → Crea un nuevo producto.
+- `PUT /api/productos/:id` → Actualiza un producto existente.
+- `DELETE /api/productos/:id` → Elimina un producto de la base de datos.   
 
 ---
+## ⚙️ Configuración del entorno local
 
-## 🚀 Ejecución del proyecto
+**1️⃣ Variables de entorno**
+
+## 📂 Crea el archivo backend/.env
+
+`MONGODB_URI=mongodb+srv://<usuario>:<password>@<cluster>/<db>?retryWrites=true&w=majority
+PORT=5001
+PORT_FRONT=http://localhost:3000`
+
+## 📂 Crea el archivo client/.env
+`REACT_APP_PORT_BACK=http://localhost:5001/api/productos`
+
 ### 1) Backend
 ```bash
 cd backend
 npm install
-npm run start   
+npm run start
+# Servidor en http://localhost:5001   
 ```
-API disponible en `http://localhost:4000/api/productos`.
 
 ### 2) Frontend
 En otra terminal:
@@ -61,19 +86,23 @@ En otra terminal:
 cd client
 npm install
 npm start
+# App en http://localhost:3000
 ```
-App disponible en `http://localhost:3000`.
-
-> El frontend tiene : "http://localhost:4000"` en `client/package.json`, por lo que puede pedir directamente `/api/productos` sin problemas de CORS.
 
 ---
 
 ## ✅ Checklist de la consigna
-- [x] API Express con `GET /api/productos` y `GET /api/productos/:id`.  
-- [x] Datos desde archivo `.js` (array local).  
-- [x] Middlewares: logger, 404, error handler.  
-- [x] React que consume la API.  
-- [x] Renderizado condicional para detalle de producto.  
-- [x] Carrito básico (contador en Navbar).  
-- [x] Formulario controlado de contacto.  
-- [x] README con instrucciones y detalles.  
+## 🧩 Backend (API)
+- [x] Conexión a MongoDB Atlas usando `.env`
+- [x] Modelo Mongoose Product con `nombre`, `descripcion`, `precio`, `stock`, `imagenUrl`  
+- [x] CRUD completo en `routes/productRoutes.js`  
+- [x] Endpoints implementados correctamente
+      
+## ⚛️ Frontend (React)
+- [x] Enrutamiento con **React Router DOM**
+- [x] Catálogo con **fetch real** a la API 
+- [x] Detalle dinámico con `useParams`
+- [x] Formulario de creación de producto (controlado)
+- [x] Redirección con `useNavigate`
+- [x] Botón de eliminación con confirmación
+
