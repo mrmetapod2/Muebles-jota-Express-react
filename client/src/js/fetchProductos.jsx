@@ -1,5 +1,5 @@
 // src/js/fetchProductos.jsx
-const PORT = process.env.PORT_BACK || 5001;
+const PORT = process.env.REACT_APP_PORT_BACK || 5000;
 
 export async function fetchProductos(id = null) {
   try {

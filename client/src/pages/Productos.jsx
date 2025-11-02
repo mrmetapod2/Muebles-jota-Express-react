@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../componentes/header.inc";
 import Footer from "../componentes/footer.inc";
 import styles from "../css/productos.module.css";
-import ProductosDestacados from "../componentes/productos";
+import ProductosMuestra from "../js/ProductosMuestra";
 import SearchBar from "../componentes/SearchBar";
 
 function Productos(navigate) {
@@ -14,7 +14,7 @@ function Productos(navigate) {
     <main className={styles.main}>
         
         <SearchBar />
-        <ProductosDestacados navigate={navigate} />
+        <ProductosMuestra  />
     </main>
 
     

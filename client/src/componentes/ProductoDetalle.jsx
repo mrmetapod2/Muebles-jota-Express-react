@@ -1,6 +1,7 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useLocation,useParams } from "react-router-dom";
 import styles from "../css/producto.module.css";
+import { fetchProductos } from "../js/fetchProductos";
 
 const formatPrice = (n) =>
   typeof n === "number"
@@ -8,8 +9,26 @@ const formatPrice = (n) =>
     : n;
 
 const ProductoDetalle = ({ addToCart }) => {
-  const { state: producto } = useLocation();
+  const { id } = useParams();
+  const [producto, setProducto] = useState(null);
 
+
+   useEffect(() => {
+
+      console.log("ProductoDetalle ID:", id);
+      fetchProductos(id)
+      .then((data) => {
+        setProducto(data);
+        console.log("Fetched producto:", data);
+      })
+      .catch((error) => {
+        console.error("Error fetching producto:", error);
+      })
+      
+   }, [id]); 
+  
+  console.log(producto);
+  
   if (!producto) return <p>Producto no encontrado</p>;
 
   const { nombre, descripcion, precio, imagenUrl, stock, detalles } = producto;

@@ -17,7 +17,7 @@ function Producto({ addToCart }) {
     );
   }
 
-  return <ProductoDetalle producto={producto} addToCart={addToCart} />;
+  return <ProductoDetalle id={id} addToCart={addToCart} />;
 }
 
 export default Producto;
