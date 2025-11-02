@@ -43,7 +43,21 @@
   text-decoration: none;
   transition: background 0.3s;
 }
+.btn-eliminar {
+  background-color: #c0392b;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
 
+.btn-eliminar:hover {
+  background-color: #e74c3c;
+}
 .btn:hover {
   background: var(--light);
 }

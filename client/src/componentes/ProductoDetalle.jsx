@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useLocation,useParams } from "react-router-dom";
+import { useLocation,useParams, useNavigate } from "react-router-dom";
 import styles from "../css/producto.module.css";
 import { fetchProductos } from "../js/fetchProductos";
+
+
+const PORT =process.env.REACT_APP_PORT_BACK;
+const url= `http://localhost:${PORT}/api/productos`
+
+
 
 const formatPrice = (n) =>
   typeof n === "number"
@@ -12,6 +18,7 @@ const ProductoDetalle = ({ addToCart }) => {
   const { id } = useParams();
   const [producto, setProducto] = useState(null);
 
+  const navigate = useNavigate();
 
    useEffect(() => {
 
@@ -27,7 +34,25 @@ const ProductoDetalle = ({ addToCart }) => {
       
    }, [id]); 
   
-  console.log(producto);
+  const handleDelete = async () => {
+    if (!window.confirm("¿Estás seguro de que quieres eliminar este producto?")) return;
+
+   
+    try {
+      const response = await fetch(`${url || "http://localhost:5001/api/productos"}/${id}`, {
+        method: "DELETE",
+      });
+
+      if (!response.ok) throw new Error("Error al eliminar el producto");
+
+      alert("Producto eliminado correctamente");
+      navigate("/"); // 🔁 redirect to home (or change to /admin if needed)
+    } catch (error) {
+      console.error("Error eliminando producto:", error);
+      alert("Ocurrió un error al eliminar el producto");
+    } 
+  };
+
   
   if (!producto) return <p>Producto no encontrado</p>;
 
@@ -50,7 +75,9 @@ const ProductoDetalle = ({ addToCart }) => {
             </p>
           )}
           {typeof stock === "number" && (
-            <p className={styles["stock"]}><strong>Stock:</strong> {stock}</p>
+            <p className={styles["stock"]}>
+              <strong>Stock:</strong> {stock}
+            </p>
           )}
           <p className={styles["precio"]}>Precio: {formatPrice(precio)}</p>
 
@@ -59,6 +86,14 @@ const ProductoDetalle = ({ addToCart }) => {
             onClick={() => addToCart(producto)}
           >
             Añadir al Carrito
+          </button>
+
+          <button
+            className={styles["btn-carrito"]}
+            onClick={handleDelete}
+            
+          >
+            Eliminar
           </button>
         </div>
       </section>
