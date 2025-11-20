@@ -1,0 +1,200 @@
+/* ===========================
+   PALETA & FUENTES BASE
+============================= */
+:root {
+  --brand: #A0522D;
+  --secondary: #87A96B;
+  --background: #F5E6D3;
+  --premium: #D4A437;
+  --light: #C47A6D;
+
+  --font-primary: 'Inter', system-ui, sans-serif;
+  --font-secondary: 'Playfair Display', Georgia, serif;
+}
+
+/* ===========================
+   CONTENEDOR PRINCIPAL
+============================= */
+.carritoContainer {
+  padding: 50px 20px;
+  background: var(--background);
+  min-height: 100vh;
+  font-family: var(--font-primary);
+  color: #333;
+}
+
+/* ===========================
+   TITULOS
+============================= */
+.carritoContainer h1 {
+  font-family: var(--font-secondary);
+  text-transform: uppercase;
+  font-size: 2.4rem;
+  letter-spacing: 0.1em;
+  color: var(--brand);
+  text-align: center;
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+
+/* ===========================
+   MENSAJES
+============================= */
+.mensaje {
+  background: var(--premium);
+  color: white;
+  padding: 12px 18px;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 25px;
+  font-family: var(--font-primary);
+  font-weight: 500;
+}
+
+/* ===========================
+   LISTA DEL CARRITO
+============================= */
+.carritoLista {
+  max-width: 900px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ===========================
+   TARJETA DE PRODUCTO
+============================= */
+.carritoItem {
+  display: flex;
+  gap: 20px;
+  background: white;
+  border: 2px solid var(--secondary);
+  padding: 15px;
+  border-radius: 12px;
+  align-items: center;
+  transition: transform 0.2s;
+}
+
+.carritoItem:hover {
+  transform: translateY(-5px);
+}
+
+/* PRODUCT IMAGE */
+.carritoImg {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+/* PRODUCT INFO */
+.carritoInfo h3 {
+  font-family: var(--font-secondary);
+  font-size: 1.4rem;
+  margin: 0 0 8px 0;
+  color: var(--brand);
+}
+
+.carritoInfo p {
+  margin: 3px 0;
+  font-size: 0.95rem;
+}
+
+/* ===========================
+   CANTIDAD
+============================= */
+.cantidadBox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+/* Botones de cantidad */
+.btnCant {
+  background: var(--secondary);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.btnCant:hover {
+  background: var(--brand);
+}
+
+/* ===========================
+   BOTÓN ELIMINAR
+============================= */
+.btnEliminar {
+  background: var(--light);
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btnEliminar:hover {
+  background: var(--brand);
+}
+
+/* ===========================
+   TOTAL Y BOTÓN FINALIZAR
+============================= */
+.total {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 1.7rem;
+  color: var(--brand);
+  font-family: var(--font-secondary);
+}
+
+.btnFinalizar {
+  display: block;
+  width: 250px;
+  margin: 20px auto 0 auto;
+  padding: 14px 20px;
+  font-family: var(--font-primary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--premium);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btnFinalizar:hover {
+  background: var(--light);
+}
+
+.btnFinalizar:disabled {
+  background: #bbb;
+  cursor: not-allowed;
+}
+
+/* ===========================
+   RESPONSIVE
+============================= */
+@media (max-width: 700px) {
+  .carritoItem {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .carritoImg {
+    width: 100%;
+    height: auto;
+  }
+}
