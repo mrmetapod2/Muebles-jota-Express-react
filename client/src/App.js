@@ -9,6 +9,11 @@ import AdminCreateProduct from "./pages/AdminCreateProduct";
 import Carrito from "./pages/Carrito";
 import Navbar from "./componentes/Navbar.inc";
 import Footer from "./componentes/footer.inc";
+import Login from "./pages/Login";
+import Perfil from "./pages/Perfil";
+import MisPedidos from "./pages/MisPedidos";
+import ProtectedRoute from "./componentes/ProtectedRoute";
+import { AuthProvider } from "./context/AuthContext";
 
 
 function App() {
@@ -27,23 +32,52 @@ function App() {
   const vaciarCarrito = () => setCarrito([]);
 
   return (
-    <Router>
-      <Navbar cartCount={carrito.length} />
+    <AuthProvider>
+      <Router>
+        <Navbar cartCount={carrito.length} resetCart={vaciarCarrito} />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/productos" element={<Productos />} />
-        <Route
-          path="/producto/:id"
-          element={<ProductDetail addToCart={addToCart} />}
-        />
-        <Route path="/contacto" element={<Contacto />} />
-        <Route path="/admin/crear-producto" element={<AdminCreateProduct />} />
-        <Route path="/carrito" element={<Carrito addToCart={addToCart} eliminarDelCarrito={eliminarDelCarrito} vaciarCarrito={vaciarCarrito}  carrito={carrito}/>}/>
-      </Routes>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/productos" element={<Productos />} />
+          <Route
+            path="/producto/:id"
+            element={<ProductDetail addToCart={addToCart} />}
+          />
+          <Route path="/contacto" element={<Contacto />} />
+          <Route path="/admin/crear-producto" element={<AdminCreateProduct />} />
+          <Route
+            path="/carrito"
+            element={
+              <Carrito
+                addToCart={addToCart}
+                eliminarDelCarrito={eliminarDelCarrito}
+                vaciarCarrito={vaciarCarrito}
+                carrito={carrito}
+              />
+            }
+          />
+          <Route path="/login" element={<Login />} />
+          <Route
+            path="/perfil"
+            element={
+              <ProtectedRoute>
+                <Perfil />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/mis-pedidos"
+            element={
+              <ProtectedRoute>
+                <MisPedidos />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
 
-      <Footer />
-    </Router>
+        <Footer />
+      </Router>
+    </AuthProvider>
   );
 }
 
