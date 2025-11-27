@@ -9,6 +9,9 @@ function Navbar({ cartCount, resetCart }) {
 
   const handleLogout = () => {
     logout();
+    if (typeof resetCart === "function") {
+      resetCart();
+    }
     navigate("/login");
   };
 
@@ -59,7 +62,7 @@ function Navbar({ cartCount, resetCart }) {
 
         {isAuthenticated ? (
           <div className="auth-links">
-            <span className="auth-user">Hola, {user?.name || "Usuario"}</span>
+            <span className="auth-user">Hola, {user?.nombre || user?.name || "Usuario"}</span>
             <a onClick={() => navigate("/perfil")}>Mi Perfil</a>
             <a onClick={() => navigate("/mis-pedidos")}>Mis pedidos</a>
             <button className="logout-btn" onClick={handleLogout}>

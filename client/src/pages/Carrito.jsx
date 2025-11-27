@@ -1,10 +1,8 @@
 // src/pages/Carrito.jsx
 import { useState } from "react";
 import styles from "../css/carrito.module.css";
-
-// Utilities to check authentication
-const getToken = () => localStorage.getItem("token");
-const isLogged = () => !!localStorage.getItem("token");
+import { useAuth } from "../context/AuthContext";
+import { apiFetch } from "../utils/api";
 
 export default function Carrito({
   carrito,
@@ -13,6 +11,7 @@ export default function Carrito({
   vaciarCarrito,
 }) {
   const [mensaje, setMensaje] = useState("");
+  const { isAuthenticated, token } = useAuth();
 
   const total = carrito.reduce(
     (acc, prod) => acc + prod.precio * (prod.cantidad || 1),
@@ -20,37 +19,32 @@ export default function Carrito({
   );
 
   const finalizarCompra = async () => {
-    if (!isLogged()) {
+    if (!isAuthenticated) {
       setMensaje("Debes iniciar sesión para finalizar la compra.");
       return;
     }
 
-    const token = getToken();
-
     try {
-      const res = await fetch("https://tu-backend.com/api/pedidos", {
+      await apiFetch("/api/pedidos", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
+        token,
         body: JSON.stringify({
-          productos: carrito.map((p) => ({
-            id: p._id,
+          items: carrito.map((p) => ({
+            producto: p._id,
+            nombre: p.nombre,
             cantidad: p.cantidad || 1,
+            precio: Number(p.precio) || 0,
           })),
           total,
         }),
       });
-
-      if (!res.ok) throw new Error("Hubo un error al crear el pedido");
 
       setMensaje("Compra realizada con éxito ✔");
 
       vaciarCarrito(); // limpiar carrito después del pedido
     } catch (err) {
       console.error(err);
-      setMensaje("Error al procesar la compra.");
+      setMensaje(err.message || "Error al procesar la compra.");
     }
   };
 

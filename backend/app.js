@@ -3,20 +3,16 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import productosRouter from "./routes/productRoutes.js";
+import authRouter from "./routes/authRoutes.js";
+import pedidosRouter from "./routes/pedidoRoutes.js";
 import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT_BACK ||  5001;
-const PORT_FRONT = process.env.PORT_FRONT || `http://localhost:3000`;
-const FRONTEND_ORIGIN = `${PORT_FRONT}`;
+const PORT = process.env.PORT_BACK || 5001;
+const FRONTEND_ORIGIN = process.env.PORT_FRONT || "http://localhost:3000";
 const MONGOURI = process.env.MONGODB_URI;
 // Middlewares
-
-const allowedOrigins = [
-  `${PORT_FRONT}`
-  
-];
 
 app.use(cors({
   origin: FRONTEND_ORIGIN,
@@ -37,15 +33,14 @@ if (!MONGOURI) {
   process.exit(1);
 }
 
-mongoose.connect(MONGOURI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
+mongoose.connect(MONGOURI)
 .then(() => console.log("✅ Conectado a MongoDB"))
 .catch(err => console.error("❌ Error conectando a MongoDB:", err));
 
 // Rutas
 app.use("/api/productos", productosRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/pedidos", pedidosRouter);
 
 // Middleware 404
 app.use((req, res) => {

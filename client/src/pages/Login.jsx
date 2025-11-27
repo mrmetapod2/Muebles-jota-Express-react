@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { apiFetch } from "../utils/api";
 
 const Login = () => {
   const { isAuthenticated, login } = useAuth();
@@ -8,6 +9,7 @@ const Login = () => {
   const location = useLocation();
   const [formValues, setFormValues] = useState({ email: "", password: "" });
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
   const redirectPath = location.state?.from?.pathname || "/perfil";
 
   if (isAuthenticated) {
@@ -22,25 +24,26 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setError(null);
+    setLoading(true);
 
     if (!formValues.email || !formValues.password) {
       setError("Completa correo y contraseña");
+      setLoading(false);
       return;
     }
 
     try {
-      // TODO: reemplazar por request real al backend cuando exista endpoint de auth
-      const fakeToken = `token-${Date.now()}`;
-      const fakeUser = {
-        name: formValues.email.split("@")[0] || "Usuario",
-        email: formValues.email
-      };
+      const data = await apiFetch("/api/auth/login", {
+        method: "POST",
+        body: JSON.stringify(formValues)
+      });
 
-      login({ token: fakeToken, user: fakeUser });
+      login({ token: data.token, user: data.user });
       navigate(redirectPath, { replace: true });
     } catch (err) {
-      setError("No se pudo iniciar sesión. Intenta nuevamente.");
+      setError(err.message || "No se pudo iniciar sesión");
     }
+    setLoading(false);
   };
 
   return (
@@ -71,7 +74,9 @@ const Login = () => {
 
         {error && <p className="form-error">{error}</p>}
 
-        <button type="submit">Ingresar</button>
+        <button type="submit" disabled={loading}>
+          {loading ? "Ingresando..." : "Ingresar"}
+        </button>
       </form>
     </section>
   );
