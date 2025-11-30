@@ -2,6 +2,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import "../css/header.inc.css"; 
 
 function Navbar({ cartCount, resetCart }) {
   const navigate = useNavigate();
@@ -36,6 +37,19 @@ function Navbar({ cartCount, resetCart }) {
         <a onClick={() => navigate("/")}>Inicio</a>
         <a onClick={() => navigate("/productos")}>Productos</a>
         <a onClick={() => navigate("/contacto")}>Contacto</a>
+        
+        {isAuthenticated ? (
+          <div className="auth-links" >
+            <span className="auth-user">Hola, {user?.nombre || user?.name || "Usuario"}</span>
+            <a onClick={() => navigate("/perfil")}>Mi Perfil</a>
+            <a onClick={() => navigate("/mis-pedidos")}>Mis pedidos</a>
+            <button className="logout-btn" onClick={handleLogout}>
+              Logout
+            </button>
+          </div>
+        ) : (
+          <a onClick={() => navigate("/login")}>Login</a>
+        )}
 
         {/* Carrito */}
         <a onClick={() => navigate("/carrito")} className="cart-link">
@@ -60,18 +74,6 @@ function Navbar({ cartCount, resetCart }) {
           </button>
         )}
 
-        {isAuthenticated ? (
-          <div className="auth-links">
-            <span className="auth-user">Hola, {user?.nombre || user?.name || "Usuario"}</span>
-            <a onClick={() => navigate("/perfil")}>Mi Perfil</a>
-            <a onClick={() => navigate("/mis-pedidos")}>Mis pedidos</a>
-            <button className="logout-btn" onClick={handleLogout}>
-              Logout
-            </button>
-          </div>
-        ) : (
-          <a onClick={() => navigate("/login")}>Login</a>
-        )}
       </nav>
     </header>
   );
