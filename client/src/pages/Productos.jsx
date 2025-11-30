@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../componentes/header.inc";
+
 import Footer from "../componentes/footer.inc";
 import styles from "../css/productos.module.css";
 import ProductosMuestra from "../js/ProductosMuestra";
