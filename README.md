@@ -1,108 +1,205 @@
-# 🛋️ E-commerce Mueblería Hermanos Jota — Sprint 5 & 6 (Full Stack MERN)
+# 🛋️ E‑commerce Mueblería Hermanos Jota — Sprint 7 & 8 (Full Stack MERN)
 
 ## 👥 Integrantes del equipo
-- **Aldave, Daniel**  
-- **Arrestegui, Tomas**  
-- **Avendaño Zacarias, Tomas**  
-- **Bardini, Eugenio**  
-- **Bauer, Agustin**  
+
+* Aldave, Daniel
+* Arrestegui, Tomás
+* Avendaño Zacarias, Tomás
+* Bardini, Eugenio
+* Bauer, Agustín
 
 ---
 
-## 📄 Descripción del proyecto
-Este proyecto corresponde al **Sprint 5 y 6** del desarrollo de la plataforma de e-commerce para **Mueblería Hermanos Jota**. 
+## 📄 Descripción del Proyecto
 
-El objetivo fue conectar el frontend en React con un backend en Express y base de datos en MongoDB Atlas, cumpliendo con los requisitos de persistencia, CRUD completo y consumo de API real.
+Este proyecto corresponde a los **Sprints 7 y 8** del desarrollo de la plataforma de e‑commerce para *Mueblería Hermanos Jota*, parte del curso Full Stack Developer (ITBA).
 
-## ✨ Principales mejoras respecto al Sprint anterior
+En esta entrega final se implementaron:
 
-📡 **Conexión real a MongoDB Atlas** (persistencia en la nube).
+* **Autenticación y autorización con JWT**, incluyendo registro, login, logout y rutas protegidas.
+* **Carrito persistente sincronizado con backend**.
+* **Gestión de pedidos**, con visualización de pedidos del usuario autenticado.
+* **Contexto global de autenticación (AuthContext)** con persistencia en localStorage.
+* **Rutas privadas en frontend** mediante `ProtectedRoute`.
+* **Estilos renovados**, vista de login profesional y UI coherente.
+* **Corrección de entorno (.env) y preparación para deploy**.
 
-🧩 **API CRUD completa** para productos con Express y Mongoose.
+---
 
-🧭 **React Router DOM** para navegación dinámica entre páginas.
+## ✨ Mejoras añadidas en Sprint 7 & 8
 
-🧾 **Formulario controlado** para crear productos nuevos desde el frontend.
+### 🔐 Autenticación (Backend + Frontend)
 
-🗑️ **Eliminación de productos** desde el detalle con confirmación y redirección automática.
+* Registro de usuarios con contraseña hasheada (`bcrypt`).
+* Login con emisión de **JWT**.
+* Middleware `authMiddleware` para proteger rutas privadas.
+* Endpoint `/api/auth/profile` retorna datos del usuario autenticado.
+* Contexto global `AuthContext`: login/logout, persistencia y protección.
+* Navbar reactiva según autenticación.
 
-⚙️ **Estados de carga y error** al consumir la API.
+### 🛒 Carrito y Pedidos
+
+* Carrito sincronizado con backend.
+* Endpoint `/api/pedidos` para crear y listar pedidos del usuario.
+* Sección **Mis Pedidos** (vista privada).
+
+### 🎨 Mejora visual
+
+* Rediseño completo de la vista Login.
+* Ajustes de estilo en Navbar, Carrito, Perfil y catálogo.
+
+### 🚀 Preparación para Deploy
+
+* Configuración `.env` separada para backend y frontend.
+* Ajustes de CORS.
+* Corrección de puertos.
+
+---
+
+## 🗂️ Estructura del repositorio
+
+```
+/client                 # Frontend (React)
+/backend                # Backend (Express + MongoDB)
+```
+
+---
+
+## 🔌 Endpoints del Backend
+
+### 🔐 Autenticación
+
+```
+POST /api/auth/register     # Registro de usuario
+POST /api/auth/login        # Login (retorna JWT)
+GET  /api/auth/profile      # Datos del usuario autenticado
+```
+
+### 🛒 Pedidos
+
+```
+GET  /api/pedidos           # Lista pedidos del usuario (privado)
+POST /api/pedidos           # Crea un nuevo pedido (privado)
+```
+
+### 📦 Productos
+
+```
+GET    /api/productos        # Listar productos
+GET    /api/productos/:id    # Detalle de producto
+POST   /api/productos        # Crear producto
+PUT    /api/productos/:id    # Actualizar producto
+DELETE /api/productos/:id    # Eliminar producto
+```
 
 ---
 
 ## 🛠️ Tecnologías utilizadas
+
 ### Backend
-- **Node.js + Express** → Servidor y API REST.
-- **MongoDB Atlas + Mongoose** → Base de datos en la nube 
-- **dotenv** → Variables de entorno
-- **CORS** → Permitir peticiones del frontend
+
+* Node.js + Express
+* MongoDB Atlas + Mongoose
+* JWT + bcrypt
+* dotenv
+* CORS
 
 ### Frontend
-- **React (CRA)** → Renderizado de componentes.  
-- **React Router DOM** → Rutas dinámicas y navegación.
-- **Fetch API** → consumo del backend.  
-- **Hooks** →  (`useState`, `useEffect`,`useParams`,`useNavigate`)
----
 
-## 📁 Estructura del repositorio
-/client                # `Frontend (React)`
-/backend               # `Backend (Express + Mongoose)`
-README.md
+* React + React Router DOM
+* Context API (AuthContext)
+* Fetch API + api wrapper (Authorization JWT)
+* Hooks: `useState`, `useEffect`, `useContext`, `useParams`, `useNavigate`
 
 ---
 
-## 🔌 Endpoints de la API
-- `GET /api/productos` → Devuelve todos los productos.
-- `GET /api/productos/:id` → Devuelve un producto por su _id.
-- `POST /api/productos` → Crea un nuevo producto.
-- `PUT /api/productos/:id` → Actualiza un producto existente.
-- `DELETE /api/productos/:id` → Elimina un producto de la base de datos.   
-
----
 ## ⚙️ Configuración del entorno local
 
-**1️⃣ Variables de entorno**
+### 1️⃣ Backend
 
-## 📂 Crea el archivo backend/.env
+Crear `backend/.env`:
 
-`MONGODB_URI=mongodb+srv://<usuario>:<password>@<cluster>/<db>?retryWrites=true&w=majority
-PORT=5001
-PORT_FRONT=http://localhost:3000`
-
-## 📂 Crea el archivo client/.env
-`REACT_APP_PORT_BACK=http://localhost:5001/api/productos`
-
-### 1) Backend
-```bash
-cd backend
-npm install
-npm run start
-# Servidor en http://localhost:5001   
+```
+MONGODB_URI=your_mongodb_connection
+PORT_BACK=5001
+PORT_FRONT=http://localhost:3000
+JWT_SECRET=un_secret_seguro
 ```
 
-### 2) Frontend
-En otra terminal:
-```bash
+Instalar dependencias:
+
+```
+cd backend
+npm install
+npm start
+```
+
+Servidor: `http://localhost:5001`
+
+---
+
+### 2️⃣ Frontend
+
+Crear `client/.env`:
+
+```
+REACT_APP_PORT_BACK=http://localhost:5001/api
+```
+
+Instalar dependencias:
+
+```
 cd client
 npm install
 npm start
-# App en http://localhost:3000
 ```
+
+App: `http://localhost:3000`
 
 ---
 
-## ✅ Checklist de la consigna
-## 🧩 Backend (API)
-- [x] Conexión a MongoDB Atlas usando `.env`
-- [x] Modelo Mongoose Product con `nombre`, `descripcion`, `precio`, `stock`, `imagenUrl`  
-- [x] CRUD completo en `routes/productRoutes.js`  
-- [x] Endpoints implementados correctamente
-      
-## ⚛️ Frontend (React)
-- [x] Enrutamiento con **React Router DOM**
-- [x] Catálogo con **fetch real** a la API 
-- [x] Detalle dinámico con `useParams`
-- [x] Formulario de creación de producto (controlado)
-- [x] Redirección con `useNavigate`
-- [x] Botón de eliminación con confirmación
+## 🧩 Checklist Sprint 7 & 8
 
+### 🔐 Autenticación
+
+* [x] Registro con bcrypt
+* [x] Login con JWT
+* [x] Middleware de protección
+* [x] Rutas privadas: Perfil, Mis Pedidos
+* [x] Logout funcional
+
+### 🛍️ Carrito & Pedidos
+
+* [x] Carrito conectado al backend
+* [x] Crear pedido
+* [x] Ver pedidos del usuario
+
+### ⚛️ Frontend
+
+* [x] AuthContext implementado
+* [x] ProtectedRoute funcionando
+* [x] Navbar sensible al estado del usuario
+* [x] Vista Login rediseñada
+* [x] Rutas nuevas: `/login`, `/perfil`, `/mis-pedidos`
+
+### 🗄️ Backend
+
+* [x] Nuevos modelos: User, Pedido
+* [x] Nuevos routers: `authRoutes`, `pedidoRoutes`
+* [x] Integración completa en `app.js`
+
+---
+
+## 🧪 Testing manual
+
+* Verificación de registro/login
+* Acceso a rutas protegidas sólo con token válido
+* Navegación condicional en Navbar
+* Carrito persistente entre recargas
+* Creación y visualización de pedidos
+
+---
+
+## 🚀 Deploy
+
+(Completar si se despliega en Vercel / Render / Railway)
