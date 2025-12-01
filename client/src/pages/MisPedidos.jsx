@@ -28,21 +28,31 @@ const MisPedidos = () => {
   return (
     <section className="page pedidos">
       <h1>Mis pedidos</h1>
-      <p>Hola {user?.nombre || user?.name || ""}</p>
-      {error && <p className="form-error">{error}</p>}
-      {loading ? (
-        <p>Cargando pedidos...</p>
-      ) : pedidos.length === 0 ? (
-        <p>Aún no tienes pedidos registrados.</p>
-      ) : (
-        <ul>
-          {pedidos.map((pedido) => (
-            <li key={pedido._id}>
-              <strong>#{pedido._id}</strong> - ${pedido.total} - {pedido.estado}
-            </li>
-          ))}
-        </ul>
-      )}
+      <div className="pedidos-card">
+        <p className="pedidos-greeting">
+          Hola {user?.nombre || user?.name || ""}
+        </p>
+        {error && <p className="form-error">{error}</p>}
+        {loading ? (
+          <p className="pedidos-placeholder">Cargando pedidos...</p>
+        ) : pedidos.length === 0 ? (
+          <p className="pedidos-placeholder">
+            Aún no tienes pedidos registrados.
+          </p>
+        ) : (
+          <ul className="pedidos-list">
+            {pedidos.map((pedido) => (
+              <li key={pedido._id} className="pedidos-item">
+                <div>
+                  <span className="pedido-id">#{pedido._id}</span>
+                  <span className="pedido-estado">{pedido.estado}</span>
+                </div>
+                <span className="pedido-total">${pedido.total}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </section>
   );
 };
