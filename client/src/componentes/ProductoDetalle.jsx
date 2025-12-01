@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation,useParams, useNavigate } from "react-router-dom";
 import styles from "../css/producto.module.css";
 import { fetchProductos } from "../js/fetchProductos";
-
+import { useCart } from "../context/CartContext";
 
 const PORT =process.env.REACT_APP_PORT_BACK;
 
@@ -14,7 +14,8 @@ const formatPrice = (n) =>
     ? new Intl.NumberFormat("es-AR", { style: "currency", currency: "ARS" }).format(n)
     : n;
 
-const ProductoDetalle = ({ addToCart }) => {
+const ProductoDetalle = () => {
+   const { addToCart } = useCart();
   const { id } = useParams();
   console.log("ProductoDetalle received ID:", id);
   const [producto, setProducto] = useState(null);

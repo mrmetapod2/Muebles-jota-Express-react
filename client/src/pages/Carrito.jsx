@@ -1,16 +1,14 @@
-// src/pages/Carrito.jsx
+import { useCart } from "../context/CartContext";
 import { useState } from "react";
-import styles from "../css/carrito.module.css";
 import { useAuth } from "../context/AuthContext";
+import styles from "../css/carrito.module.css";
 import { apiFetch } from "../utils/api";
 
-export default function Carrito({
-  carrito,
-  addToCart,
-  eliminarDelCarrito,
-  vaciarCarrito,
-}) {
+
+export default function Carrito() {
+  const { carrito, addToCart, removeFromCart, clearCart } = useCart();
   const [mensaje, setMensaje] = useState("");
+
   const { isAuthenticated, token } = useAuth();
 
   const total = carrito.reduce(
@@ -33,17 +31,15 @@ export default function Carrito({
             producto: p._id,
             nombre: p.nombre,
             cantidad: p.cantidad || 1,
-            precio: Number(p.precio) || 0,
+            precio: Number(p.precio),
           })),
           total,
         }),
       });
 
       setMensaje("Compra realizada con éxito ✔");
-
-      vaciarCarrito(); // limpiar carrito después del pedido
+      clearCart();
     } catch (err) {
-      console.error(err);
       setMensaje(err.message || "Error al procesar la compra.");
     }
   };
@@ -75,7 +71,7 @@ export default function Carrito({
 
                 <button
                   className={styles.btnCant}
-                  onClick={() => eliminarDelCarrito(prod._id)}
+                  onClick={() => removeFromCart(prod._id)}
                 >
                   -
                 </button>
@@ -83,7 +79,7 @@ export default function Carrito({
 
               <button
                 className={styles.btnEliminar}
-                onClick={() => eliminarDelCarrito(prod._id)}
+                onClick={() => removeFromCart(prod._id)}
               >
                 Eliminar
               </button>

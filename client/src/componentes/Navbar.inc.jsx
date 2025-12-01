@@ -3,8 +3,10 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import "../css/header.inc.css"; 
+import { useCart } from "../context/CartContext";
 
 function Navbar({ cartCount, resetCart }) {
+  const { carrito, clearCart } = useCart();
   const navigate = useNavigate();
   const { isAuthenticated, user, logout } = useAuth();
 
@@ -48,20 +50,23 @@ function Navbar({ cartCount, resetCart }) {
             </button>
           </div>
         ) : (
-          <a onClick={() => navigate("/login")}>Login</a>
+          <div className="auth-links" >
+            <a onClick={() => navigate("/login")}>Login</a>
+            <a onClick={() => navigate("/register")}>Registrarse</a>
+          </div>
         )}
 
         {/* Carrito */}
         <a onClick={() => navigate("/carrito")} className="cart-link">
           <span className="cart-icon">🛒</span>
-          <span className="cart-count">{cartCount}</span>
+          <span className="cart-count">{carrito.length}</span>
         </a>
 
         {typeof resetCart === "function" && (
           <button
             id="reset-cart"
             title="Vaciar carrito"
-            onClick={resetCart}
+            onClick={clearCart}
             style={{
               background: "none",
               border: "none",
