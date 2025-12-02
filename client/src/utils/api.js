@@ -1,6 +1,7 @@
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:5001";
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:5001".replace(/\/$/, "");
 
 export const apiFetch = async (endpoint, { token, headers = {}, ...options } = {}) => {
+  console.log(`BASE URL:${API_BASE_URL}`);
   const finalHeaders = {
     "Content-Type": "application/json",
     ...headers
