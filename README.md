@@ -202,4 +202,6 @@ App: `http://localhost:3000`
 
 ## 🚀 Deploy
 
-(Completar si se despliega en Vercel / Render / Railway)
+Backend Render: https://muebles-jota-express-react.onrender.com/
+Frontend Vercel: https://muebles-jota-express-react-92u73wpss-mrmetapod2s-projects.vercel.app/
+
